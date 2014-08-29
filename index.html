@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="trextoe">
+<head>
+	<title>T Rex Toe</title>
+	<meta charset="utf-8">
+	<!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+
+<body ng-controller="trextoeCtrl">
+	<div class="container">
+
+<!-- info and debug -->
+	<h2>p1: {{db.pOnename}} p2: {{db.pTwoname}}</h2>
+	<h2>player number: {{playerNumber}}</h2>
+	<h2>total player number: {{db.totalPlayers}}</h2>
+	<h2>who's turn: {{db.turn}}</h2>
+
+<!-- show results -->
+	<div ng-show="db.end_game">
+		<h2>{{db.result}}</h2>
+		<h2 ng-click="reset()">play again?</h2>	
+	</div>
+
+<!-- game ready and players ready message -->
+<!-- make fade in and out -->
+	<div ng-show="show_game_start">start
+	</div>
+
+
+
+	<!-- show submit name -->
+	<div ng-show="submitname">
+	<form ng-submit="startup()">
+		<input type="text" ng-model="playerName">
+		<input type="submit">
+	</form>
+	</div>
+
+<!-- show waiting screen -->
+	<div ng-show="show_waiting">
+		<h2>Waiting for player 2...</h2>
+	</div>
+
+	<!-- show board -->
+	<div ng-show="gameboard" 
+	ng-repeat="row in db.board track by $index"
+	ng-class="{
+	clear: $index%3==0,
+	cell:true,
+	borderbottom: $index<6,
+	borderleft: $index%3!=0,
+	dino: db.board[$index].player==1,
+	toe: db.board[$index].player==2,
+	winner: db.board[$index].win == 1 || db.board[$index].win == 2
+	}"
+	ng-click="placePiece($index)"
+	></div>
+
+	
+	</div>
+
+</body>
+</html>

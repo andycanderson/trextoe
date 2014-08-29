@@ -1,0 +1,47 @@
+.cell{
+	width:100px;
+	height:100px;
+	display:inline-block;
+	float:left;
+}
+#title{
+	width:auto;
+	height:100px;
+}
+.borderbottom{
+	border-bottom: 1px solid green;
+}
+.borderleft{
+	border-left: 1px solid green;
+}
+.clear{
+	clear:both;
+}
+
+.container{
+	margin:0 auto;
+	max-width: 600px;
+}
+.dino{
+	background-image: url('../images/dino.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.toe{
+	background-image: url('../images/toe.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.winner{
+	background-color: red;
+}
+h1{
+	font-family: helvetica;
+	font-size: 3em;
+}
+h3{
+	font-family: helvetica;
+	font-size: 1.5em;
+}
