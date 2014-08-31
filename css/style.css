@@ -1,42 +1,86 @@
+/*board styling*/
 .cell{
-	width:100px;
-	height:100px;
+	width:150px;
+	height:150px;
 	display:inline-block;
 	float:left;
 }
-#title{
-	width:auto;
-	height:100px;
-}
 .borderbottom{
-	border-bottom: 1px solid green;
+	border-bottom: 5px dashed green;
 }
 .borderleft{
-	border-left: 1px solid green;
+	border-left: 5px dashed green;
 }
 .clear{
 	clear:both;
 }
-
 .container{
 	margin:0 auto;
-	max-width: 600px;
+	max-width: 800px;
 }
 .dino{
+	position: relative;
 	background-image: url('../images/dino.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+
+	top:5px;
+	padding:65px 0;
+	border: 5px solid red;
+	width:130px;
+	margin: 0 auto;
+	border-radius:100px;
+
+
 }
 .toe{
+	position: relative;
 	background-image: url('../images/toe.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
+	
+	top:5px;
+	padding:65px 0;
+	border: 5px solid blue;
+	width:130px;
+	margin: 0 auto;
+	border-radius:100px;
 }
+
+
 .winner{
-	background-color: red;
+	border:red solid 3px;
+
 }
+
+/*1st frame*/
+#frame_one{
+	text-align: center;
+	margin-top: 2em;
+}
+#submitButton{
+	border:none;
+	color:red;
+	padding:2em;
+}
+#title_one{
+	display: inline-block;
+	font-size: 4em;
+}
+#inputName{
+	padding:1em;
+	font-size: 1em;
+}
+#name_form{
+	display:inline-block;
+	margin-top: 1em;
+	vertical-align: bottom;
+}
+
+
+
 h1{
 	font-family: helvetica;
 	font-size: 3em;

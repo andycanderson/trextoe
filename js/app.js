@@ -2,8 +2,13 @@ var firebaseLink = "https://trextoe.firebaseio.com/data";
 var app = angular.module("trextoe", ["firebase"]);
 app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase){
 	
+	// controls what's 
 	$scope.submitname = true;
 	$scope.gameboard = false;
+	$scope.showNameScore = false;
+	$scope.showWhosTurn = false;
+
+
 	$scope.playerNumber;
 
 	$scope.startup = function(){
@@ -13,6 +18,11 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 		syncObject = sync.$asObject();
 		syncObject.$bindTo($scope, "db").then(function(){
 	
+			// SESSIONS AN STUFF
+			// if($scope.db==undefined)
+			// {
+			// 	$scope.db=[];
+			// } 
 			if($scope.db.player===2)
 			{
 				$scope.playerNumber = $scope.db.player;
@@ -23,10 +33,12 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 				// player counter to proceed from wait
 				$scope.db.totalPlayers = 2;
 				$scope.db.turn = 1;
+				$scope.db.scoreboard = [0,0]
 				
 			}
 			else
 			{
+
 				$scope.db.player = 1;
 				$scope.playerNumber = $scope.db.player;
 				// set value for next player
@@ -60,6 +72,7 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 	};
 
 	$scope.makeBoard = function(){
+		$scope.showNameScore = true;
 		// show board
 		$scope.gameboard = true;
 		// reset result statement
@@ -71,12 +84,8 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 	};
 
 	$scope.placePiece = function(index){
-
-
-		// check for win and tie
-
-
-		// is it player's turn and is it empty
+	
+		// check if empty or game is ended
 		if(validMove(index)  && !$scope.db.end_game)
 		{
 			// this sets position with player's number
@@ -85,9 +94,11 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 			// change value to denote next players turn
 			if (checkWinner(index))
 			{
-			
+				$scope.db.winner;
 				$scope.db.result = "Player " + $scope.db.turn + " wins!";
 				$scope.db.end_game = true;
+				// set winner name and add to score board 
+				$scope.db.turn == 1? ($scope.db.winner = $scope.db.pOnename, $scope.db.scoreboard[0]+=1):($scope.db.winner = $scope.db.pTwoname, $scope.db.scoreboard[1]+=1);
 			}
 			else if (checkTie())
 			{
@@ -103,6 +114,7 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 	};
 	function changeTurn(){
 		$scope.db.turn == 1 ? $scope.db.turn = 2 : $scope.db.turn = 1;
+		// $scope.db.turn == $scope.playerNumber ? $scope.showWhosTurn = true : $scope.showWhosTurn = false;
 	};
 
 	function validMove(index){

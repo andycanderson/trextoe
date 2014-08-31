@@ -8,6 +8,7 @@
 	<![endif]-->
 
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>
 	<script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
@@ -19,11 +20,23 @@
 <body ng-controller="trextoeCtrl">
 	<div class="container">
 
+		<div id="frame_one" ng-show="submitname">
+			<h1 class="animated fadeInDown" id="title_one">t rex toe</h1>
+			<div id="name_form">
+				<form ng-submit="startup()">
+				<input id="inputName"autofocus type="text" ng-model="playerName" placeholder="type your name">
+				<input id="submitButton" type="submit">
+			</form>
+			</div>
+		</div>
+	
+
 <!-- info and debug -->
-	<h2>p1: {{db.pOnename}} p2: {{db.pTwoname}}</h2>
-	<h2>player number: {{playerNumber}}</h2>
-	<h2>total player number: {{db.totalPlayers}}</h2>
-	<h2>who's turn: {{db.turn}}</h2>
+	<div ng-show="showNameScore">
+	<h2 ng-show="">who's turn: {{db.turn}}</h2>
+	<h2>{{db.pOnename}}: {{db.scoreboard[0]}}</h2>
+	<h2>{{db.pTwoname}}: {{db.scoreboard[1]}}</h2>
+	</div>
 
 <!-- show results -->
 	<div ng-show="db.end_game">
@@ -38,33 +51,30 @@
 
 
 
-	<!-- show submit name -->
-	<div ng-show="submitname">
-	<form ng-submit="startup()">
-		<input type="text" ng-model="playerName">
-		<input type="submit">
-	</form>
-	</div>
-
 <!-- show waiting screen -->
 	<div ng-show="show_waiting">
 		<h2>Waiting for player 2...</h2>
 	</div>
 
 	<!-- show board -->
-	<div ng-show="gameboard" 
+	<div class="animated fadeIn"
+	ng-show="gameboard" 
 	ng-repeat="row in db.board track by $index"
 	ng-class="{
 	clear: $index%3==0,
 	cell:true,
 	borderbottom: $index<6,
-	borderleft: $index%3!=0,
-	dino: db.board[$index].player==1,
-	toe: db.board[$index].player==2,
-	winner: db.board[$index].win == 1 || db.board[$index].win == 2
+	borderleft: $index%3!=0
 	}"
 	ng-click="placePiece($index)"
-	></div>
+		><div
+		class="animated"
+		ng-class="{
+		dino: db.board[$index].player==1,
+		toe: db.board[$index].player==2,
+		swing: db.board[$index].win==1 || db.board[$index].win==2}">
+		</div>
+	</div>
 
 	
 	</div>
