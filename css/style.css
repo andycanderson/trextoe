@@ -5,18 +5,18 @@
 	display:inline-block;
 	float:left;
 }
-.borderbottom{
+.cell:hover{
+	/*background-color: rgba(100,100,100,.5);*/
+	cursor:pointer;
+}
+/*.borderbottom{
 	border-bottom: 5px dashed green;
 }
 .borderleft{
 	border-left: 5px dashed green;
-}
+}*/
 .clear{
 	clear:both;
-}
-.container{
-	margin:0 auto;
-	max-width: 800px;
 }
 .dino{
 	position: relative;
@@ -49,43 +49,234 @@
 	border-radius:100px;
 }
 
-
-.winner{
-	border:red solid 3px;
-
-}
-
-/*1st frame*/
-#frame_one{
-	text-align: center;
-	margin-top: 2em;
-}
-#submitButton{
-	border:none;
-	color:red;
-	padding:2em;
-}
-#title_one{
-	display: inline-block;
-	font-size: 4em;
-}
-#inputName{
-	padding:1em;
-	font-size: 1em;
-}
-#name_form{
-	display:inline-block;
-	margin-top: 1em;
-	vertical-align: bottom;
-}
-
-
-
+/*generic*/
 h1{
 	font-family: helvetica;
-	font-size: 3em;
+}
+h2{
+	font-family: helvetica;
+	font-size: 2em;
 }
 h3{
 	font-family: helvetica;
 	font-size: 1.5em;
 }
+.container{
+	margin:0 auto;
+	max-width: 800px;
+	background-color: white;
+}
+.in-line{
+	display:inline-block;
+}
+figcaption{
+	font-family: helvetica;
+	font-weight: 100;
+	font-size: 1.5em;
+}
+.title{
+	margin-top: .5em;
+	font-size: 6em;
+	text-align: center;
+}
+
+/*1st frame*/
+#frame_one{
+	text-align: center;
+	padding-top: 4em;
+	height:620px;
+}
+#submitButton{
+	color:rgba(250,250,250,1);
+	background-color:rgba(120,120,120,1);
+	border:none;
+	padding:1em;
+	font-size: 1em;
+	font-weight: 900;
+	cursor:pointer;
+}
+#submitButton:hover{
+	color:white;
+	background-color: rgba(200,200,200,1);
+}
+#title_one{
+	font-size: 6em;
+}
+#inputName{
+	padding:1em;
+	font-size: 1em;
+	margin:0;
+	border:3px gray inset;
+}
+#inputName:focus{
+	outline-style: none;
+}
+#name_form{
+	display:inline-block;
+	vertical-align: text-bottom;
+}
+.startup_pic{
+	height:200px;
+}
+#the_icons{
+	margin-top: 3em;
+}
+
+/*2nd frame*/
+#waiting{
+	text-align: center;
+	margin:1.5em 0;
+	font-weight: 100;
+	-webkit-animation: loadinganimate 5s infinite; /* Safari 4+ */
+	-moz-animation:    loadinganimate 5s infinite; /* Fx 5+ */
+	-o-animation:      loadinganimate 5s infinite; /* Opera 12+ */
+	animation:         loadinganimate 5s infinite; /* IE 10+, Fx 29+ */
+}
+@-webkit-keyframes loadinganimate {
+  0%   { opacity: 0; color:black;}
+  50% { opacity: 1; color:blue; }
+  100%{ opacity: 0; color:black;}
+}
+@-moz-keyframes loadinganimate {
+  0%   { opacity: 0; color:black;}
+  50% { opacity: 1; color:blue;}
+  100%{ opacity: 0; color:black;}
+}
+@-o-keyframes loadinganimate {
+  0%   { opacity: 0; color:black;}
+  50% { opacity: 1; color:blue;}
+  100%{ opacity: 0; color:black;}
+}
+@keyframes loadinganimate {
+  0%   { opacity: 0; color:black;}
+  50% { opacity: 1; color:blue;}
+  100%{ opacity: 0; color:black;}
+}
+#loading_pic{
+	display:block;
+	margin:0 auto;
+	height:400px;
+}
+
+/*frame three*/
+#title_three{
+	margin-top: .2em;
+	font-size: 2em;
+}
+#pOne{
+	display:inline-block;
+}
+#pOnescore{
+	display:block;
+}
+/*p1 scoreboard*/
+#leftscore{
+	float:left;
+	text-align: center;
+	padding-right: 1em;
+}
+#pTwo{
+	display:inline-block;
+}
+#pTwoscore{
+	display:block;
+}
+/*p2 scoreboard*/
+#rightscore{
+	padding-left: 1em;
+	text-align: center;
+	float:right;
+}
+#game_start{
+	font-size: 10em;
+	position:absolute;
+	left:35%;
+	top:20%;
+}
+
+#start{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-color: rgba(250,250,250,.8);
+	left:0;
+	opacity:0;
+	z-index: -1;
+	-webkit-animation: blurred 3s 1s; /* Safari 4+ */
+	-moz-animation:    blurred 3s 1s; /* Fx 5+ */
+	-o-animation:      blurred 3s 1s; /* Opera 12+ */
+	animation:         blurred 3s 1s; /* IE 10+, Fx 29+ */
+}
+@-webkit-keyframes blurred {
+  0%   { opacity: 1;z-index: 1}
+  50% { opacity: .5; z-index: 1 }
+  100%{ opacity: 0; z-index: 1}
+}
+@-moz-keyframes blurred {
+  0%   { opacity: 1;z-index: 1}
+  50% { opacity: .5;z-index: 1 }
+  100%{ opacity: 0;z-index: 1 }
+}
+@-o-keyframes blurred {
+  0%   { opacity: 1;z-index: 1 }
+  50% { opacity: .5;z-index: 1 }
+  100%{ opacity: 0;z-index: 1 }
+}
+@keyframes blurred {
+  0%   { opacity: 1; z-index: 1}
+  50% { opacity: .5;z-index: 1 }
+  100%{ opacity: 0;z-index: 1 }
+}
+#whosturn{
+	text-align: center;
+}
+#board{
+	box-shadow: 0 0 10px #888888;
+}
+
+
+/*prevents static so flash screens can stack on top*/
+#board_container{
+	text-align: center;
+	/*center board*/
+	margin-left: 170px;
+	margin-top: 100px;
+	margin-bottom: 200px;
+	position: absolute;
+}
+#scoreboard{
+	border:1px black solid;
+	position:absolute;
+	top:1em;
+	left:1em;
+}
+
+/*win*/
+.winning{
+	-webkit-animation: winanimate 2s infinite; /* Safari 4+ */
+	-moz-animation:    winanimate 2s infinite; /* Fx 5+ */
+	-o-animation:      winanimate 2s infinite; /* Opera 12+ */
+	animation:         winanimate 2s infinite; /* IE 10+, Fx 29+ */
+}
+@-webkit-keyframes winanimate {
+  0%   { opacity: 0;}
+  50% { opacity: 1;  }
+  100%{ opacity: 0; }
+}
+@-moz-keyframes winanimate {
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+  100%{ opacity: 0; }
+}
+@-o-keyframes winanimate {
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+  100%{ opacity: 0; }
+}
+@keyframes winanimate {
+  0%   { opacity: 0; }
+  50% { opacity: 1; }
+  100%{ opacity: 0; }
+}
+
+

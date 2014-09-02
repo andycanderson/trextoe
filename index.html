@@ -20,64 +20,107 @@
 <body ng-controller="trextoeCtrl">
 	<div class="container">
 
+		<!-- frame one -->
 		<div id="frame_one" ng-show="submitname">
 			<h1 class="animated fadeInDown" id="title_one">t rex toe</h1>
 			<div id="name_form">
 				<form ng-submit="startup()">
-				<input id="inputName"autofocus type="text" ng-model="playerName" placeholder="type your name">
+				<input id="inputName"autofocus type="text" ng-model="playerName" placeholder="enter name to start!">
 				<input id="submitButton" type="submit">
-			</form>
+				</form>
+			</div>
+
+			<div id="the_icons" class="animated bounceIn">
+				<figure class="in-line">
+					<figcaption>T Rex</figcaption>
+				<img class="startup_pic" src="images/dino.png">
+				<figcaption>a vicious apex predator</figcaption>
+				</figure>
+
+				<figure class="in-line">
+					<figcaption>The Toe</figcaption>
+				<img class="startup_pic" src="images/toe.png">
+				<figcaption>smelly home of the toenail</figcaption>
+				</figure>
 			</div>
 		</div>
-	
-
-<!-- info and debug -->
-	<div ng-show="showNameScore">
-	<h2 ng-show="">who's turn: {{db.turn}}</h2>
-	<h2>{{db.pOnename}}: {{db.scoreboard[0]}}</h2>
-	<h2>{{db.pTwoname}}: {{db.scoreboard[1]}}</h2>
-	</div>
-
-<!-- show results -->
-	<div ng-show="db.end_game">
-		<h2>{{db.result}}</h2>
-		<h2 ng-click="reset()">play again?</h2>	
-	</div>
-
-<!-- game ready and players ready message -->
-<!-- make fade in and out -->
-	<div ng-show="show_game_start">start
-	</div>
 
 
-
-<!-- show waiting screen -->
-	<div ng-show="show_waiting">
-		<h2>Waiting for player 2...</h2>
-	</div>
-
-	<!-- show board -->
-	<div class="animated fadeIn"
-	ng-show="gameboard" 
-	ng-repeat="row in db.board track by $index"
-	ng-class="{
-	clear: $index%3==0,
-	cell:true,
-	borderbottom: $index<6,
-	borderleft: $index%3!=0
-	}"
-	ng-click="placePiece($index)"
-		><div
-		class="animated"
-		ng-class="{
-		dino: db.board[$index].player==1,
-		toe: db.board[$index].player==2,
-		swing: db.board[$index].win==1 || db.board[$index].win==2}">
+		<!-- frame two -->
+		<!-- show waiting screen -->
+		<div class="animated fadeInRight" ng-show="show_waiting">
+			<h1 class="title">t rex toe</h1>
+			<h2 id="waiting">waiting for another player to join...</h2>
+			<img id="loading_pic" src="images/loading.png">
 		</div>
-	</div>
+
+
+		<!-- show results -->
+		<div ng-show="db.end_game">
+			<h2>{{db.result}}</h2>
+			<h2 ng-click="reset()">play again?</h2>	
+		</div>
+
+		
+
+
+	
+	
+
+		<!-- frame three -->
+		<!-- show board -->
+		<div id="frame_three">
+			<!-- game ready and players ready message -->
+	<!-- make fade in and out -->
+			<div id="start" class="animated fadeInRightBig" ng-show="show_game_start"><h2 id="game_start">Start</h2>
+			</div>
+
+			<!-- info and debug -->
+
+		<div id="scoreboard" class="animated fadeInLeftBig" ng-show="showNameScore">
+			<h1 ng-show="gameboard" class="title" id="title_three">t rex toe</h1>
+			
+			<figure id="leftscore">
+			<h2 id="pOne">{{db.pOnename}}</h2>
+			<figcaption id="pOnescore">{{db.scoreboard[0]}}</figcaption>
+			</figure>
+			
+			<figure id="rightscore">
+			<h2 id="pTwo">{{db.pTwoname}}</h2>
+			<figcaption id="pTwoscore">{{db.scoreboard[1]}}</figcaption>
+			</figure>
+		</div>
+
+
+		<h2 id="whosturn" ng-show="showWhosTurn" class="animated fadeInRight"><span ng-bind="db.whosup"></span>'s turn</h2>
+
+
+			<div id="board_container">
+				<div
+				class="animated fadeInRightBig"
+				id="board"
+				ng-show="gameboard" 
+				ng-repeat="row in db.board track by $index"
+				ng-class="{
+				clear: $index%3==0,
+				cell:true,
+				borderbottom: $index<6,
+				borderleft: $index%3!=0
+				}"
+				ng-click="placePiece($index)"
+					>
+					<div
+					ng-class="{
+					dino: db.board[$index].player==1,
+					toe: db.board[$index].player==2,
+					winning: db.board[$index].win==1 || db.board[$index].win==2}">
+					</div>
+				</div>
+			</div>
+		
+		</div>
 
 	
 	</div>
-
 </body>
 </html>

@@ -1,6 +1,6 @@
 var firebaseLink = "https://trextoe.firebaseio.com/data";
 var app = angular.module("trextoe", ["firebase"]);
-app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase){
+app.controller("trextoeCtrl", ["$scope", "$firebase", "$timeout", function($scope, $firebase, $timeout){
 	
 	// controls what's 
 	$scope.submitname = true;
@@ -67,11 +67,16 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 				$scope.show_game_start = true;
 				$scope.show_waiting = false;
 				$scope.makeBoard();
+				
 			}		
 		});
 	};
 
 	$scope.makeBoard = function(){
+		// show who starts
+		$scope.showWhosTurn = true;
+		$scope.db.whosup = $scope.db.turn==1 ? $scope.db.pOnename: $scope.db.pTwoname; 
+
 		$scope.showNameScore = true;
 		// show board
 		$scope.gameboard = true;
@@ -84,10 +89,12 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 	};
 
 	$scope.placePiece = function(index){
-	
+
+
 		// check if empty or game is ended
 		if(validMove(index)  && !$scope.db.end_game)
 		{
+			$scope.showWhosTurn=false;
 			// this sets position with player's number
 
 			$scope.db.board[index].player = $scope.playerNumber;
@@ -95,10 +102,10 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 			if (checkWinner(index))
 			{
 				$scope.db.winner;
-				$scope.db.result = "Player " + $scope.db.turn + " wins!";
 				$scope.db.end_game = true;
 				// set winner name and add to score board 
 				$scope.db.turn == 1? ($scope.db.winner = $scope.db.pOnename, $scope.db.scoreboard[0]+=1):($scope.db.winner = $scope.db.pTwoname, $scope.db.scoreboard[1]+=1);
+				$scope.db.result = $scope.db.winner + " wins!";
 			}
 			else if (checkTie())
 			{
@@ -113,8 +120,10 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 		}
 	};
 	function changeTurn(){
+		$scope.showWhosTurn = true;
 		$scope.db.turn == 1 ? $scope.db.turn = 2 : $scope.db.turn = 1;
-		// $scope.db.turn == $scope.playerNumber ? $scope.showWhosTurn = true : $scope.showWhosTurn = false;
+		$scope.db.turn == 1 ? $scope.db.whosup = $scope.db.pOnename : $scope.db.whosup = $scope.db.pTwoname;
+		console.log($scope.db.turn);
 	};
 
 	function validMove(index){
