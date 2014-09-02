@@ -92,7 +92,7 @@
 			</figure>
 		</div>
 		
-		<div id="whosturn" ng-show="showWhosTurn">
+		<div id="whosturn" ng-show="showWhosTurn" ng-class="{toeturn:db.turn==2,dinoturn:db.turn==1}">
 		<h2><span ng-bind="db.whosup"></span>'s turn</h2>
 		</div>
 

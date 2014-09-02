@@ -7,7 +7,8 @@
 	cursor:pointer;
 }
 .empty:hover{
-	box-shadow: inset 0 0 30px rgba(0,220,50,1);
+	/*box-shadow: inset 0 0 30px rgba(0,220,50,1);*/
+	box-shadow: inset 0 0 30px rgba(0,0,0,1);
 }
 .borderbottom{
 	border-bottom: 1px solid black;
@@ -197,6 +198,7 @@ figcaption{
 	float:left;
 	text-align: center;
 	padding-right: 2em;
+	color:rgba(140, 0, 0, 1);
 }
 #pTwo{
 	display:inline-block;
@@ -211,7 +213,11 @@ figcaption{
 	padding-left: 2em;
 	text-align: center;
 	float:right;
+	color:rgba(39, 35, 140, 1);
 }
+.dinoturn{color:rgba(140, 0, 0, 1);}
+.toeturn{color:rgba(39, 35, 140, 1);}
+
 
 #whosturn{
 	padding-top: .5em;
