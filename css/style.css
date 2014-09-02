@@ -154,6 +154,14 @@ figcaption{
 	-o-animation:      loadinganimate 4s infinite; /* Opera 12+ */
 	animation:         loadinganimate 4s infinite; /* IE 10+, Fx 29+ */
 }
+#waiting_title{
+	background-color: black;
+	color: white;
+	width: 400px;
+	padding: 30px;
+	border-radius: 20px;
+	margin: .5em auto;
+}
 @-webkit-keyframes loadinganimate {
   0%   { opacity: 0; color:black;}
   50% { opacity: 1; color:blue; }

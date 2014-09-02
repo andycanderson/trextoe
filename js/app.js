@@ -95,7 +95,6 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 		// check if empty or game is ended
 		if(validMove(index)  && !$scope.db.end_game)
 		{
-			$scope.showWhosTurn=false;
 			// this sets position with player's number
 
 			$scope.db.board[index].player = $scope.playerNumber;
@@ -122,7 +121,6 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 		}
 	};
 	function changeTurn(){
-		$scope.showWhosTurn = true;
 		$scope.db.turn == 1 ? $scope.db.turn = 2 : $scope.db.turn = 1;
 		$scope.db.turn == 1 ? $scope.db.whosup = $scope.db.pOnename : $scope.db.whosup = $scope.db.pTwoname;
 	};

@@ -17,7 +17,7 @@
     <script src="js/app.js"></script>
 </head>
 
-<body ng-controller="trextoeCtrl" ng-class="{volcano:gameboard}">
+<body ng-controller="trextoeCtrl">
 	<div class="container">
 
 		<!-- frame one -->
@@ -50,8 +50,8 @@
 
 		<!-- frame two -->
 		<!-- show waiting screen -->
-		<div class="animated fadeInRight" ng-show="show_waiting">
-			<h1 class="title">t rex toe</h1>
+		<div ng-show="show_waiting">
+			<h1 id="waiting_title" class="title">t rex toe</h1>
 			<h2 id="waiting">waiting for another player to join...</h2>
 			<img id="loading_pic" src="images/loading.png">
 		</div>
@@ -92,8 +92,9 @@
 			</figure>
 		</div>
 		
-		<div id="whosturn" ng-show="showWhosTurn" ng-class="{toeturn:db.turn==2,dinoturn:db.turn==1}">
-		<h2><span ng-bind="db.whosup"></span>'s turn</h2>
+		<div id="whosturn" class="animated fadeInRight">
+		<h2 ng-show="showWhosTurn && db.whosup==playerName"><span ng-class="{toeturn:db.turn==2,dinoturn:db.turn==1}">Your</span> turn</h2>
+		<h2 ng-show="showWhosTurn && db.whosup!=playerName"><span ng-show="db.turn==1">{{db.pOnename}}</span><span ng-show="db.turn==2">{{db.pTwoname}}</span>'s turn</h2>
 		</div>
 
 
