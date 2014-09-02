@@ -17,17 +17,19 @@
     <script src="js/app.js"></script>
 </head>
 
-<body ng-controller="trextoeCtrl">
+<body ng-controller="trextoeCtrl" ng-class="{volcano:gameboard}">
 	<div class="container">
 
 		<!-- frame one -->
 		<div id="frame_one" ng-show="submitname">
-			<h1 class="animated fadeInDown" id="title_one">t rex toe</h1>
-			<div id="name_form">
-				<form ng-submit="startup()">
-				<input id="inputName"autofocus type="text" ng-model="playerName" placeholder="enter name to start!">
-				<input id="submitButton" type="submit">
-				</form>
+			<div class="animated fadeInDown" id="titlecontain">
+				<h1 id="title_one">t rex toe</h1>
+				<div id="name_form">
+					<form ng-submit="startup()">
+					<input id="inputName"autofocus type="text" ng-model="playerName" placeholder="enter name to start!">
+					<input id="submitButton" type="submit">
+					</form>
+				</div>
 			</div>
 
 			<div id="the_icons" class="animated bounceIn">
@@ -40,7 +42,7 @@
 				<figure class="in-line">
 					<figcaption>The Toe</figcaption>
 				<img class="startup_pic" src="images/toe.png">
-				<figcaption>smelly home of the toenail</figcaption>
+				<figcaption>home of the toenail</figcaption>
 				</figure>
 			</div>
 		</div>
@@ -56,29 +58,28 @@
 
 
 		<!-- show results -->
-		<div ng-show="db.end_game">
-			<h2>{{db.result}}</h2>
-			<h2 ng-click="reset()">play again?</h2>	
+		<div id="endblur" ng-show="db.end_game" class="animated" ng-click="reset()">
+			<div id="popup">
+			<h2 id="resultstatement" ng-hide="win || db.tie">You lose.</h2>
+			<h2 id="resultstatement" ng-show="win && !db.tie">You win!</h2>
+			<h2 id="resultstatement" ng-show="db.tie">It's a tie.</h2>
+			<h2 id="playagain">play again?</h2>	
+			</div>
 		</div>
 
 		
-
-
-	
-	
 
 		<!-- frame three -->
 		<!-- show board -->
 		<div id="frame_three">
 			<!-- game ready and players ready message -->
 	<!-- make fade in and out -->
-			<div id="start" class="animated fadeInRightBig" ng-show="show_game_start"><h2 id="game_start">Start</h2>
-			</div>
+			
 
 			<!-- info and debug -->
 
-		<div id="scoreboard" class="animated fadeInLeftBig" ng-show="showNameScore">
-			<h1 ng-show="gameboard" class="title" id="title_three">t rex toe</h1>
+		<div id="scoreboard" class="animated" ng-show="showNameScore">
+			<h1 ng-show="gameboard" class="title" id="title_three">t rex toe<br>scoreboard</h1>
 			
 			<figure id="leftscore">
 			<h2 id="pOne">{{db.pOnename}}</h2>
@@ -90,29 +91,35 @@
 			<figcaption id="pTwoscore">{{db.scoreboard[1]}}</figcaption>
 			</figure>
 		</div>
-
-
-		<h2 id="whosturn" ng-show="showWhosTurn" class="animated fadeInRight"><span ng-bind="db.whosup"></span>'s turn</h2>
+		
+		<div id="whosturn" ng-show="showWhosTurn">
+		<h2><span ng-bind="db.whosup"></span>'s turn</h2>
+		</div>
 
 
 			<div id="board_container">
 				<div
-				class="animated fadeInRightBig"
+				class="animated"
 				id="board"
 				ng-show="gameboard" 
 				ng-repeat="row in db.board track by $index"
 				ng-class="{
 				clear: $index%3==0,
 				cell:true,
+				empty: db.board[$index].player!=2 && db.board[$index].player!=1,
+				taken_dino: db.board[$index].player==1,
+				taken_toe: db.board[$index].player==2, 
 				borderbottom: $index<6,
 				borderleft: $index%3!=0
 				}"
 				ng-click="placePiece($index)"
 					>
 					<div
+					id="thepics"
 					ng-class="{
 					dino: db.board[$index].player==1,
 					toe: db.board[$index].player==2,
+					tie: db.tie,
 					winning: db.board[$index].win==1 || db.board[$index].win==2}">
 					</div>
 				</div>
