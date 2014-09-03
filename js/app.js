@@ -18,33 +18,27 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 		syncObject = sync.$asObject();
 		syncObject.$bindTo($scope, "db").then(function(){
 	
-			// SESSIONS AN STUFF
-			// if($scope.db==undefined)
-			// {
-			// 	$scope.db=[];
-			// } 
 			if($scope.db.player===2)
 			{
 				$scope.playerNumber = $scope.db.player;
 				// reset player values
 				$scope.db.player = 1; 
-				// set player name in db
+				// set player name in database
 				$scope.db.pTwoname = $scope.playerName;
 				// player counter to proceed from wait
 				$scope.db.totalPlayers = 2;
 				$scope.db.turn = 1;
-				$scope.db.scoreboard = [0,0]
-				
+				$scope.db.scoreboard = [0,0];
 			}
 			else
 			{
-
+				$scope.db.c += 1;
 				$scope.db.player = 1;
 				$scope.playerNumber = $scope.db.player;
 				// set value for next player
 				$scope.db.player += 1;
 
-				// set player name in db
+				// set player name in database
 				$scope.db.pOnename = $scope.playerName;
 				// player counter to proceed from wait
 				$scope.db.totalPlayers = 1;
