@@ -1,4 +1,4 @@
-var firebaseLink = "https://trexandtoe.firebaseio.com/data";
+var firebaseLink = "https://trextoe.firebaseio.com/data";
 var app = angular.module("trextoe", ["firebase"]);
 app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase){
 	
@@ -32,7 +32,7 @@ app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase
 			}
 			else
 			{
-				$scope.db.c += 1;
+				// $scope.db.c += 1;
 				$scope.db.player = 1;
 				$scope.playerNumber = $scope.db.player;
 				// set value for next player

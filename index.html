@@ -17,6 +17,7 @@
 	<script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
 
 
+
     <script src="js/app.js"></script>
 </head>
 
@@ -63,10 +64,10 @@
 		<!-- show results -->
 		<div id="endblur" ng-show="db.end_game" class="animated" ng-click="reset()">
 			<div id="popup">
-			<h2 id="resultstatement" ng-hide="win || db.tie">You lose.</h2>
-			<h2 id="resultstatement" ng-show="win && !db.tie">You win!</h2>
-			<h2 id="resultstatement" ng-show="db.tie">It's a tie.</h2>
-			<h2 id="playagain">play again?</h2>	
+				<h2 id="resultstatement" ng-hide="win || db.tie">You lose.</h2>
+				<h2 id="resultstatement" ng-show="win && !db.tie">You win!</h2>
+				<h2 id="resultstatement" ng-show="db.tie">It's a tie.</h2>
+				<h2 id="playagain">Play Again?</h2>	
 			</div>
 		</div>
 
