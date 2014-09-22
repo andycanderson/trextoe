@@ -1,4 +1,4 @@
-var firebaseLink = "https://trextoe.firebaseio.com/data";
+var firebaseLink = "https://trexandtoe.firebaseio.com/data";
 var app = angular.module("trextoe", ["firebase"]);
 app.controller("trextoeCtrl", ["$scope", "$firebase", function($scope, $firebase){
 	

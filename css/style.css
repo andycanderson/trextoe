@@ -64,15 +64,10 @@
 }
 
 /*generic*/
-h1{
-	font-family: helvetica;
-}
 h2{
-	font-family: helvetica;
 	font-size: 2em;
 }
 h3{
-	font-family: helvetica;
 	font-size: 1.5em;
 }
 .container{
@@ -84,7 +79,7 @@ h3{
 	display:inline-block;
 }
 figcaption{
-	font-family: helvetica;
+	font-family: 'Londrina Outline', cursive;
 	font-weight: 100;
 	font-size: 1.5em;
 }
@@ -102,33 +97,34 @@ figcaption{
 }
 #titlecontain{
 	margin: 0 auto;
-	background-color: black;
 	padding:3em 0;
 	max-width: 500px;
 	border-radius: 20px;
 }
 #submitButton{
-	color:rgba(250,250,250,1);
-	background-color:rgba(120,120,120,1);
-	border:none;
-	padding:1em;
+	color:rgba(0,0,0,1);
+	background-color:rgba(255,255,255,1);
+	border:1px solid black;
+	padding: 18px;
 	font-size: 1em;
-	font-weight: 900;
 	cursor:pointer;
+	font-family: 'Josefin Sans', sans-serif;
 }
 #submitButton:hover{
 	color:white;
-	background-color: rgba(200,200,200,1);
+	background-color: rgba(0,0,0,1);
 }
 #title_one{
 	font-size: 6em;
-	color:white;
+	color:black;
+	font-family: 'Londrina Outline', cursive;
 }
 #inputName{
 	padding:1em;
 	font-size: 1em;
 	margin:0;
 	border:3px rgba(100,190,140,1) solid;
+	font-family: 'Josefin Sans', sans-serif;
 }
 #inputName:focus{
 	outline-style: none;
@@ -149,18 +145,19 @@ figcaption{
 	text-align: center;
 	margin:1.5em 0;
 	font-weight: 100;
+	font-family: 'Josefin Sans', sans-serif;
 	-webkit-animation: loadinganimate 4s infinite; /* Safari 4+ */
 	-moz-animation:    loadinganimate 4s infinite; /* Fx 4+ */
 	-o-animation:      loadinganimate 4s infinite; /* Opera 12+ */
 	animation:         loadinganimate 4s infinite; /* IE 10+, Fx 29+ */
 }
 #waiting_title{
-	background-color: black;
-	color: white;
+	color: black;
 	width: 400px;
-	padding: 30px;
-	border-radius: 20px;
 	margin: .5em auto;
+	font-family: 'Londrina Outline', cursive;
+
+
 }
 @-webkit-keyframes loadinganimate {
   0%   { opacity: 0; color:black;}
@@ -188,10 +185,14 @@ figcaption{
 	height:400px;
 }
 
-/*frame three*/
+/*3rd frame*/
+#scoreboard{
+	font-family: 'Josefin Sans', sans-serif;
+}
 #title_three{
 	font-size: 2em;
 	margin-bottom: 1em;
+	font-family: 'Londrina Outline', cursive;
 }
 #pOne{
 	display:inline-block;
@@ -232,6 +233,7 @@ figcaption{
 	font-size: 2em;
 	font-weight: 100;
 	text-align: center;
+	font-family: 'Londrina Outline', cursive;
 	-webkit-animation: phasingin 1s; /* Safari 4+ */
 	-moz-animation:    phasingin 1s; /* Fx 5+ */
 	-o-animation:      phasingin 1s; /* Opera 12+ */
@@ -290,18 +292,17 @@ figcaption{
 	margin-top: 6em;
 	opacity: 1;
 	text-align: center;
-	background-color: rgba(0,0,0,.9);
+	background-image: url("../image/trex.svg");
+	background-repeat: no-repeat;
 	width: 600px;
 	margin: 90px auto;
-	height: 200px;
+	height: auto;
 	padding-top: 100px;
 	padding-bottom: 50px;
 	border-radius: 20px;
 	box-shadow: 0 0 5px;
 	cursor:pointer;
-}
-#popup:hover{
-	background-color: rgba(0,200,90,1);
+
 }
 #resultstatement{
 	font-size: 5em;
