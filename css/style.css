@@ -102,6 +102,8 @@ figcaption{
 	border-radius: 20px;
 }
 #submitButton{
+	/*webkit to remove default on mobile*/
+	-webkit-appearance: none;
 	color:rgba(0,0,0,1);
 	background-color:rgba(255,255,255,1);
 	border:1px solid black;
